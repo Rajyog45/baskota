@@ -11,58 +11,40 @@ export default function StatsSection() {
     []
   );
 
-  const [counts, setCounts] = useState(() => stats.map(() => 0));
+  const [counts, setCounts] = useState<number[]>([0, 0, 0]);
   const [hasAnimated, setHasAnimated] = useState(false);
-
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (hasAnimated) return;
-
-    const section = sectionRef.current;
-    if (!section) return;
+    if (hasAnimated || !sectionRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-
         setHasAnimated(true);
 
         stats.forEach((stat, index) => {
-          const delay = index * 300;
+          const startTime = performance.now();
+          const duration = 1500;
 
-          setTimeout(() => {
-            const duration = 1500;
-            const startTime = performance.now();
+          const animate = (time: number) => {
+            const progress = Math.min((time - startTime) / duration, 1);
+            setCounts((prev) => {
+              const next = [...prev];
+              next[index] = Math.floor(stat.value * progress);
+              return next;
+            });
+            if (progress < 1) requestAnimationFrame(animate);
+          };
 
-            const animate = (currentTime: number) => {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-
-              setCounts((prev) => {
-                const updated = [...prev];
-                updated[index] = Math.floor(stat.value * progress);
-                return updated;
-              });
-
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              }
-            };
-
-            requestAnimationFrame(animate);
-          }, delay);
+          requestAnimationFrame(animate);
         });
       },
       { threshold: 0.3 }
     );
 
-    observer.observe(section);
-
-    return () => {
-      observer.unobserve(section);
-      observer.disconnect();
-    };
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, [hasAnimated, stats]);
 
   return (
@@ -71,16 +53,7 @@ export default function StatsSection() {
       className="bg-gray-50 py-10 sm:py-14 md:py-16 overflow-x-hidden"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <h2
-          className="
-            mx-auto
-            max-w-xl sm:max-w-2xl md:max-w-3xl
-            text-lg sm:text-2xl md:text-3xl lg:text-4xl
-            font-bold text-gray-900
-            leading-tight
-            mb-6
-          "
-        >
+        <h2 className="mx-auto max-w-3xl text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
           Stay focused on your business. Let us handle the design.
         </h2>
 
@@ -93,15 +66,7 @@ export default function StatsSection() {
               <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-indigo-600">
                 {counts[idx]}+
               </p>
-
-              <p
-                className="
-                  mt-1
-                  text-xs sm:text-sm md:text-base lg:text-lg
-                  text-gray-600
-                  font-medium
-                "
-              >
+              <p className="mt-1 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 font-medium">
                 {stat.label}
               </p>
             </div>

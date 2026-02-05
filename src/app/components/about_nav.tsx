@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Header: React.FC = () => {
   const [scroll, setScroll] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname(); 
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScroll(window.scrollY > 60);
@@ -35,12 +35,13 @@ const Header: React.FC = () => {
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.9 }}
-    
+      >
+        {/* NAVBAR BACKGROUND */}
         <div
           className={`absolute inset-0 transition-all duration-300 ${
             scroll
               ? "bg-blue-600 backdrop-blur-md shadow-lg"
-              : "bg-[url('/bgImage08.jpg')] h-auto w-auto bg-cover bg-center"
+              : "bg-[url('/bgImage08.jpg')] bg-cover bg-center"
           }`}
         />
 
@@ -54,21 +55,15 @@ const Header: React.FC = () => {
                 exit={{ height: 0, opacity: 0 }}
               >
                 <div className="max-w-7xl mx-auto px-10 py-6 flex justify-between items-center text-white text-sm">
-      
                   <div className="flex items-center gap-4">
-                    <Link
-                      href="https://www.facebook.com/baskota20236/"
-                      target="_blank"
-                      aria-label="Facebook"
-                    >
+                    <Link href="https://www.facebook.com/baskota20236/" target="_blank">
                       <FaFacebookF className="hover:text-indigo-400 transition" />
                     </Link>
-                    <Link href="#" aria-label="Twitter">
+                    <Link href="#">
                       <FaTwitter className="hover:text-indigo-400 transition" />
                     </Link>
                   </div>
 
-      
                   <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2">
                       <HiOutlineMail className="text-indigo-400" />
@@ -88,20 +83,23 @@ const Header: React.FC = () => {
             )}
           </AnimatePresence>
 
-      
           <motion.div
             className="max-w-7xl mx-auto px-10 flex items-center justify-between"
             animate={{ height: scroll ? 64 : 80 }}
             transition={{ duration: 0.3 }}
           >
-  
-            <motion.div animate={{ scale: scroll ? 0.85 : 1 }} transition={{ duration: 0.3 }}>
+            <motion.div animate={{ scale: scroll ? 0.85 : 1 }}>
               <Link href="/">
-                <Image src="/logo-white.png" alt="Baskota Consulting" width={150} height={50} priority />
+                <Image
+                  src="/logo-white.png"
+                  alt="Baskota Consulting"
+                  width={150}
+                  height={50}
+                  priority
+                />
               </Link>
             </motion.div>
 
-          
             <nav className="hidden lg:flex gap-4">
               {links.map((link) => {
                 const isActive = pathname === link.href;
@@ -112,7 +110,7 @@ const Header: React.FC = () => {
                     className={`px-3 py-1 rounded-md transition ${
                       isActive
                         ? "bg-indigo-500 text-white font-semibold shadow-lg"
-                        : "text-white hover:bg-indigo-400/30 hover:text-white"
+                        : "text-white hover:bg-indigo-400/30"
                     }`}
                   >
                     {link.label}
@@ -121,7 +119,6 @@ const Header: React.FC = () => {
               })}
             </nav>
 
-      
             <div className="hidden lg:block">
               <Link
                 href="/contact"
@@ -131,11 +128,10 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            
             <button
+              title="request"
               onClick={() => setMenuOpen(!menuOpen)}
               className="lg:hidden flex flex-col gap-1"
-              aria-label="Toggle menu"
             >
               <span className="w-6 h-0.5 bg-white" />
               <span className="w-6 h-0.5 bg-white" />
@@ -143,7 +139,6 @@ const Header: React.FC = () => {
             </button>
           </motion.div>
 
-          {/* MOBILE MENU */}
           <AnimatePresence>
             {menuOpen && (
               <motion.div
@@ -158,10 +153,10 @@ const Header: React.FC = () => {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`block px-3 py-2 rounded-md transition ${
+                      className={`px-3 py-2 rounded-md ${
                         isActive
-                          ? "bg-indigo-500 text-white font-semibold shadow"
-                          : "hover:bg-indigo-400/30 hover:text-white"
+                          ? "bg-indigo-500 font-semibold"
+                          : "hover:bg-indigo-400/30"
                       }`}
                     >
                       {link.label}
@@ -174,7 +169,6 @@ const Header: React.FC = () => {
         </div>
       </motion.header>
 
-      
       <div className="h-[160px] md:h-[200px]" />
     </>
   );
