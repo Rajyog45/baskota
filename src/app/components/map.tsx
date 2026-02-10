@@ -38,15 +38,15 @@ export default function ContactInfo() {
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start mb-30 sm:mb-10 sm:h-20 sm:text-[13px]">
                 {item.icon}
                 <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-                <p className="text-gray-600 mb-4">{item.description}</p>
+                <p className="text-gray-600 mb-3">{item.description}</p>
                 {item.extra.map((e, index) => (
                   <div key={index} className="mb-2">
-                    {e.label && <h6 className="font-medium text-gray-700">{e.label}</h6>}
+                    {e.label && <h6 className="font-medium text-gray-700 mb-5">{e.label}</h6>}
                     <span className="text-gray-900">{e.value}</span>
                   </div>
                 ))}
@@ -54,7 +54,20 @@ export default function ContactInfo() {
             </div>
           ))}
         </div>
-        
+        <div className="map iframe-h-2">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.245876809758!2d87.27593471462544!3d26.480027083315868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef75f760fc780d%3A0xe8a634ef274e7639!2sBaskota%20Consulting!5e0!3m2!1sen!2snp!4v1591785618053!5m2!1sen!2snp"
+        width="100%"
+        height="300px"
+        style={{ border: 0,
+                  padding:"10px"
+         }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="sm:h-25 sm:w-50%"
+      />
+    </div>
       </div>
     </section>
   );

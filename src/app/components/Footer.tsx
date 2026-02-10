@@ -80,9 +80,9 @@ const Footer: React.FC = () => {
             <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sister Concerns</h4>
             <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base">
               <li><Link href="#" className="hover:text-indigo-400">Baskota Dhuwani</Link></li>
-              <li><a href="https://sriyog.com" target="_blank" className="hover:text-indigo-400">Sriyog.Com</a></li>
-              <li><a href="https://pfs.com.np" target="_blank" className="hover:text-indigo-400">Pracas Infosys</a></li>
-              <li><Link href="#" className="hover:text-indigo-400">Media Gate</Link></li>
+              <li><a href="https://sriyog.com" target="_blank"  rel="noopener noreferrer" className="hover:text-indigo-400">Sriyog.Com</a></li>
+              <li><a href="https://pfs.com.np" target="_blank"  rel="noopener noreferrer"className="hover:text-indigo-400">Pracas Infosys</a></li>
+              <li><Link href="#"   rel="noopener noreferrer" className="hover:text-indigo-400">Media Gate</Link></li>
               <li><Link href="#" className="hover:text-indigo-400">Baskota Furniture</Link></li>
               <li><Link href="#" className="hover:text-indigo-400">Hardik Advertising</Link></li>
             </ul>
@@ -117,13 +117,14 @@ const Footer: React.FC = () => {
             {error && <p className="text-red-500 mt-2 text-sm sm:text-base">{error}</p>}
             {success && <p className="text-green-500 mt-2 text-sm sm:text-base">{success}</p>}
 
-            {/* Social Icons */}
+        
             <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-6 text-lg sm:text-xl">
-              <a href="https://www.facebook.com/baskota20236/" target="_blank" className="hover:text-indigo-400"><FaFacebookF /></a>
-              <a href="#" className="hover:text-indigo-400"><FaDribbble /></a>
-              <a href="#" className="hover:text-indigo-400"><FaSkype /></a>
-              <a href="#" className="hover:text-indigo-400"><FaLinkedinIn /></a>
-              <a href="#" className="hover:text-indigo-400"><FaYoutube /></a>
+              <a title="facebook" href="https://www.facebook.com/baskota20236/" target="_blank" rel="noopener noreferrer"
+                  className="hover:text-indigo-400"><FaFacebookF /></a>
+              <a title="Fadribble" href="#" rel="noopener noreferrer" className="hover:text-indigo-400"><FaDribbble /></a>
+              <a title="Skype" href="#" rel="noopener noreferrer" className="hover:text-indigo-400"><FaSkype /></a>
+              <a title="Linkedin" href="#" rel="noopener noreferrer" className="hover:text-indigo-400"><FaLinkedinIn /></a>
+              <a title="Youtube" href="#" rel="noopener noreferrer" className="hover:text-indigo-400"><FaYoutube /></a>
             </div>
           </div>
 
@@ -147,7 +148,8 @@ const Footer: React.FC = () => {
           <span>© {currentYear} Baskota Consulting Pvt. Ltd. | All Rights Reserved</span>
           <ul className="flex gap-3 sm:gap-4 mt-2 md:mt-0 text-sm sm:text-base">
             <li><Link href="/about" className="hover:text-gray-200">Site By</Link></li>
-            <li><a href="https://pfs.com.np" target="_blank" className="hover:text-gray-200">Pracas Infosys</a></li>
+            <li><a href="https://pfs.com.np" target="_blank"  rel="noopener noreferrer"
+                     className="hover:text-gray-200">Pracas Infosys</a></li>
           </ul>
         </div>
       </div>

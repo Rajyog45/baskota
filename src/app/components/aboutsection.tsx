@@ -29,7 +29,7 @@ const SectionBlock = ({
               width={600}
               height={420}
               priority
-              className="w-full h-[400px] rounded-xl shadow-lg object-cover"
+              className="w-full h-100 rounded-xl shadow-lg object-cover"
             />
           </div>
 

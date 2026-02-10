@@ -169,7 +169,7 @@ const Header: React.FC = () => {
         </div>
       </motion.header>
 
-      <div className="h-[160px] md:h-[200px]" />
+      <div className="h-40 md:h-50" />
     </>
   );
 };

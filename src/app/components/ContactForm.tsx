@@ -158,7 +158,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-[100px] bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg text-sm font-medium transition disabled:opacity-70"
+              className="w-25 bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg text-sm font-medium transition disabled:opacity-70"
             >
               {loading ? "Submitting..." : "Submit"}
             </button>
