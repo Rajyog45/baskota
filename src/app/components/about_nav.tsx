@@ -25,6 +25,7 @@ const Header: React.FC = () => {
     { label: "Services", href: "/services" },
     { label: "FAQs", href: "/faq" },
     { label: "Team", href: "/team" },
+    { label: "Our Policy", href: "/policy" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -41,7 +42,7 @@ const Header: React.FC = () => {
           className={`absolute inset-0 transition-all duration-300 ${
             scroll
               ? "bg-blue-600 backdrop-blur-md shadow-lg"
-              : "bg-[url('/bgImage08.jpg')] bg-cover bg-center"
+              : "bg-[url('/bgImage08.jpg')] bg-cover bg-center h-50"
           }`}
         />
 
@@ -84,7 +85,7 @@ const Header: React.FC = () => {
           </AnimatePresence>
 
           <motion.div
-            className="max-w-7xl mx-auto px-10 flex items-center justify-between"
+            className="max-w-7xl mx-auto  px-10 flex items-center justify-between"
             animate={{ height: scroll ? 64 : 80 }}
             transition={{ duration: 0.3 }}
           >
@@ -93,8 +94,8 @@ const Header: React.FC = () => {
                 <Image
                   src="/logo-white.png"
                   alt="Baskota Consulting"
-                  width={150}
-                  height={50}
+                  width={300}
+                  height={100}
                   priority
                 />
               </Link>
@@ -107,9 +108,9 @@ const Header: React.FC = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-3 py-1 rounded-md transition ${
+                    className={`px-3 py-1  rounded-md transition ${
                       isActive
-                        ? "bg-indigo-500 text-white font-semibold shadow-lg"
+                        ? "bg-indigo-500 text-white  font-semibold shadow-lg"
                         : "text-white hover:bg-indigo-400/30"
                     }`}
                   >

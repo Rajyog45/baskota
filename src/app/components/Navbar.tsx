@@ -164,6 +164,7 @@ export default function Navbar() {
                 <Link href="/services">Services</Link>
                 <Link href="/faq">FAQs</Link>
                 <Link href="/team">Team</Link>
+                <Link href="/policy">Our Policy</Link>
                 <Link href="/contact">Contact</Link>
               </motion.div>
             )}
