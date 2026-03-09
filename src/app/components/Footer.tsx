@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="text-white">
       <div className="bg-gray-900 py-8 sm:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="max-w-8xl  mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
           <div>
             <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sister Concerns</h4>
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base disabled:opacity-60"
+                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base disabled:opacity-60 cursor-pointer"
               >
                 {loading ? "Subscribing..." : "Subscribe"}
               </button>
@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="bg-indigo-600 px-4 sm:px-10 py-3 sm:py-4 text-sm sm:text-base">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <span>© {currentYear} Baskota Consulting Pvt. Ltd. | All Rights Reserved</span>
           <ul className="flex gap-3 sm:gap-4 mt-2 md:mt-0 text-sm sm:text-base">
             <li><Link href="/about" className="hover:text-gray-200">Site By</Link></li>

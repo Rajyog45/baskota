@@ -1,6 +1,6 @@
 // src/app/api/contact/route.ts
 import { NextResponse } from "next/server";
-import { connectDB } from "@/app/lib/mogodb";
+import { clientPromise} from "../../lib/mogodb"
 import Contact from "@/app/models/Contact";
 
 console.log("API /api/contact file loaded!");

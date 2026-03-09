@@ -32,21 +32,21 @@ const contactItems = [
 
 export default function ContactInfo() {
   return (
-    <section className="bg-gray-50 py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-gray-50 py-16 ">
+      <div className="max-w-7xl mx-auto px-6 ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {contactItems.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 h-50 "
             >
-              <div className="flex flex-col items-start mb-30 sm:mb-10 sm:h-20 sm:text-[13px]">
-                {item.icon}
+              <div className="flex flex-col items-start mb-30 sm:mb-10  sm:text-[13px]">
+                {item.icon} 
                 <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
-                <p className="text-gray-600 mb-3">{item.description}</p>
+                <p className="text-gray-600 text-sm mb-3">{item.description}</p>
                 {item.extra.map((e, index) => (
                   <div key={index} className="mb-2">
-                    {e.label && <h6 className="font-medium text-gray-700 mb-5">{e.label}</h6>}
+                    {e.label && <h6 className="font-medium  text-gray-700 mb-5">{e.label}</h6>}
                     <span className="text-gray-900">{e.value}</span>
                   </div>
                 ))}
@@ -65,7 +65,7 @@ export default function ContactInfo() {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className="sm:h-25 sm:w-50%"
+        className="sm:h-100 sm:w-70% mt-10"
       />
     </div>
       </div>

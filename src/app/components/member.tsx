@@ -25,11 +25,11 @@ export default function Member() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="sm:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-12 mt-15 sm:mt-40">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+          <p className="text-gray-600 font-semibold max-w-2xl mx-auto">
             Baskota Consulting consists of highly elite professionals, in each and every field.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function Member() {
 
               <div className="p-4">
                 <h5 className="font-bold text-lg">{member.name}</h5>
-                <span className="text-gray-500">{member.position}</span>
+                <span className="text-gray-500 font-semibold">{member.position}</span>
               </div>
             </div>
           ))}

@@ -7,6 +7,7 @@ import StatsSection from './components/StatsSection';
 import CaseStudy from './components/Header';
 import Choose from './components/Choose';
 import Footer from './components/Footer';
+import CaseStudies from './components/CaseStudies';
 
 
 const page = () => {
@@ -16,7 +17,8 @@ const page = () => {
       <Offer/>
       <ConsultingSection/>
       <StatsSection/>
-      <CaseStudy/>
+      {/* <CaseStudy/>  */}
+      <CaseStudies/>
       <Choose/>
       <Footer/>
     </div>  

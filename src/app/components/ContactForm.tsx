@@ -7,7 +7,7 @@ export default function ContactPage() {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    phone: "",  
     company: "",
     message: "",
   });
@@ -67,10 +67,10 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen mt-40  bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-3xl p-6 md:p-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">
-          Contact Us
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 ">
+      <div className="bg-white rounded-xl shadow-lg w-full max-w-3xl p-6 md:p-10 xl:mt-50">
+        <h2 className="text-2xl text-center sm:text-left sm:text-3xl xl:text-4xl font-bold mb-6 text-gray-800">
+          Contact Us  
         </h2>
 
         <form
@@ -78,7 +78,7 @@ export default function ContactPage() {
           className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
         >
           <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium text-sm">
+            <label className="mb-1 sm:text-2xl text-gray-700 font-medium text-md">
               First Name*
             </label>
             <input
@@ -87,12 +87,12 @@ export default function ContactPage() {
               required
               value={form.firstName}
               onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm"
+              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-lg"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium text-sm">
+            <label className="mb-1 sm:text-2xl text-gray-700 font-medium text-md">
               Last Name*
             </label>
             <input
@@ -101,55 +101,55 @@ export default function ContactPage() {
               required
               value={form.lastName}
               onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm"
+              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-lg"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium text-sm">
+            <label className="mb-1 sm:text-2xl text-gray-700 font-medium text-md">
               Email*
             </label>
-            <input
+            <input  
               placeholder="Email"
               type="email"
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm"
+              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-lg"
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium text-sm">Phone</label>
+            <label className="mb-1 sm:text-2xl text-gray-700 font-medium text-md">Phone</label>
             <input
               placeholder="Phone NUmber"
               type="tel"
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm"
+              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-lg"
             />
           </div>
 
           <div className="flex flex-col md:col-span-2">
-            <label className="mb-1 text-gray-700 font-medium text-sm">Company</label>
+            <label className="mb-1 sm:text-2xl text-gray-700 font-medium text-md">Company</label>
             <input
               placeholder="Company"
               type="text"
               value={form.company}
               onChange={(e) => setForm({ ...form, company: e.target.value })}
-              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm"
+              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-lg"
             />
           </div>
 
           <div className="flex flex-col md:col-span-2">
-            <label className="mb-1 text-gray-700 font-medium text-sm">
+            <label className="mb-1 sm:text-2xl text-gray-700 font-medium text-md">
               Comments or Questions
             </label>
             <textarea
               placeholder="Enter you comment"
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm"
+              className="border border-gray-300 p-2 md:p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none text-lg"
               rows={4}
             />
           </div>
@@ -158,7 +158,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-25 bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg text-sm font-medium transition disabled:opacity-70"
+              className="w-25 bg-indigo-600 text-white cursor-pointer  hover:bg-indigo-700 px-4 py-2 rounded-lg text-sm font-medium transition disabled:opacity-70"
             >
               {loading ? "Submitting..." : "Submit"}
             </button>
