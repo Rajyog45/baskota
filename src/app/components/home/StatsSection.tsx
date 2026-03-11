@@ -57,9 +57,9 @@ export default function StatsSection() {
           Stay focused on your business. Let us handle the design.
         </h2>
 
-        {/* MOBILE LAYOUT (Option A) ONLY */}
+        
         <div className="block sm:hidden">
-          {/* Top row: Clients + Reports */}
+          
           <div className="grid grid-cols-2 gap-6 mb-4">
             {stats.slice(0, 2).map((stat, idx) => (
               <div
@@ -76,7 +76,7 @@ export default function StatsSection() {
             ))}
           </div>
 
-          {/* Bottom row: Years Experience */}
+          
           <div className="w-2/3 mx-auto">
             <div className="bg-white rounded-xl shadow p-4">
               <p className="text-2xl font-extrabold text-indigo-600">
@@ -89,7 +89,7 @@ export default function StatsSection() {
           </div>
         </div>
 
-        {/* DESKTOP / TABLET LAYOUT (original 3-column layout) */}
+        
         <div className="hidden sm:grid sm:grid-cols-3 gap-6 sm:gap-8 mt-8">
           {stats.map((stat, idx) => (
             <div

@@ -13,15 +13,15 @@ interface TeamMember {
 
 export default function Member() {
   const team: TeamMember[] = [
-    { name: "Kishor Baskota", position: "Founder & CEO", image: "/kishor-baskota.png", facebook: "#", linkedin: "#" },
-    { name: "Prakash Upreti", position: "IT Officer", image: "/prakash-upreti.jpg", facebook: "#", linkedin: "#" },
-    { name: "Pankaj Ghimire", position: "Media Officer", image: "/pankaj-ghimire.png", facebook: "#", linkedin: "#" },
-    { name: "Roshan Kattel", position: "Finance Officer", image: "/roshan-kattel.jpg", facebook: "#", linkedin: "#" },
-    { name: "Sabina Baskota", position: "HR Officer", image: "/sabina-baskota.jpg", facebook: "#", linkedin: "#" },
-    { name: "Sudesh Dahal", position: "Civil Engineer", image: "/sudesh-dahal.png", facebook: "#", linkedin: "#" },
-    { name: "Ishwar Baskota", position: "Admin Head", image: "/ishwar-baskota.png", facebook: "#", linkedin: "#" },
-    { name: "Sobit Maan Shrestha", position: "CTO", image: "/Sobit-Maan-Shrestha.jpg", facebook: "#", linkedin: "#" },
-    { name: "Govind Kamat", position: "Marketing Officer", image: "/govind-kamat.png", facebook: "#", linkedin: "#" },
+    { name: "Kishor Baskota", position: "Founder & CEO", image: "/team/kishor-baskota.png", facebook: "#", linkedin: "#" },
+    { name: "Prakash Upreti", position: "IT Officer", image: "/team/prakash-upreti.jpg", facebook: "#", linkedin: "#" },
+    { name: "Pankaj Ghimire", position: "Media Officer", image: "/team/pankaj-ghimire.png", facebook: "#", linkedin: "#" },
+    { name: "Roshan Kattel", position: "Finance Officer", image: "/team/roshan-kattel.jpg", facebook: "#", linkedin: "#" },
+    { name: "Sabina Baskota", position: "HR Officer", image: "/team/sabina-baskota.jpg", facebook: "#", linkedin: "#" },
+    { name: "Sudesh Dahal", position: "Civil Engineer", image: "/team/sudesh-dahal.png", facebook: "#", linkedin: "#" },
+    { name: "Ishwar Baskota", position: "Admin Head", image: "/team/ishwar-baskota.png", facebook: "#", linkedin: "#" },
+    { name: "Sobit Maan Shrestha", position: "CTO", image: "/team/Sobit-Maan-Shrestha.jpg", facebook: "#", linkedin: "#" },
+    { name: "Govind Kamat", position: "Marketing Officer", image: "/team/govind-kamat.png", facebook: "#", linkedin: "#" },
   ];
 
   return (

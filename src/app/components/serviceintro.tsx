@@ -24,7 +24,7 @@ export default function CaseStudy() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-start gap-8">
           <div className="lg:w-7/12 w-full rounded overflow-hidden">
-            <div className="relative h-[400px] lg:h-[500px] w-full">
+            <div className="relative h-100 lg:h-125 w-full">
               {images.map((src, idx) => (
                 <div
                   key={idx}

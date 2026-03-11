@@ -8,7 +8,7 @@ import {
   fadeRight,
   viewportOnce,
   transitionFast,
-} from "../utils/animation";
+} from "../../utils/animation";
 import PlayButton from "./PlayButton";
 import ProgressBar from "./ProgressBar";
 
@@ -29,7 +29,7 @@ const ConsultingSection: React.FC = () => {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
-          {/* IMAGE SIDE */}
+        
           <motion.div
             variants={fadeLeft}
             initial="initial"
@@ -39,11 +39,11 @@ const ConsultingSection: React.FC = () => {
             className="relative w-full"
           >
             <Image
-              src="/about03.jpg"
+              src="/home/about03.jpg"
               alt="Consulting Meeting"
               width={600}
               height={400}
-              className="w-full h-auto md:h-[420px] object-cover rounded-lg sm:rounded-xl md:rounded-2xl shadow-md"
+              className="w-full h-auto md:h-105 object-cover rounded-lg sm:rounded-xl md:rounded-2xl shadow-md"
             />
 
             <div className="absolute inset-0 flex items-center justify-center">
@@ -51,7 +51,7 @@ const ConsultingSection: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* TEXT SIDE */}
+          
           <motion.div
             variants={fadeRight}
             initial="initial"

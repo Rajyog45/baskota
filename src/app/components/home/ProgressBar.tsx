@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { progressBar } from "../utils/animation";
+import { progressBar } from "../../utils/animation";
 
 interface ProgressBarProps {
   label: string;

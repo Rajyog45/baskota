@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
             </p>
             <ul className="space-y-1 sm:space-y-2 text-sm sm:text-base">
               <li className="flex items-center gap-2"><FaPaperPlane /> Biratnagar-3, Pipal Chowk, Nepal</li>
-              <li className="flex items-center gap-2"><FaEnvelope /> <a href="mailto:info@baskota.com" className="hover:text-indigo-400">info@baskota.com</a></li>
+              <li className="flex items-center gap-2"><FaEnvelope /> <a href="mailto:info@baskota.com" className="hover:text-indigo-400">info@baskotaconsulting.com.np</a></li>
               <li className="flex items-center gap-2"><FaPhone /> <a href="tel:+977-98520-20236" className="hover:text-indigo-400">+977-98520-20236</a></li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/about_nav'
-import Member from '../components/member'
+import Member from '../components/team/member'
 import Footer from '../components/Footer'
 
 const page = () => {

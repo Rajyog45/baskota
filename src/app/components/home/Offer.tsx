@@ -39,7 +39,6 @@ export default function Offer() {
         We here at Baskota Consulting offer excellent services to our clients with our top notch professionals.
       </p>
 
-      {/* GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8  ">
         {offers.map((item, idx) => (
           <motion.div

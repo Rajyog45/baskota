@@ -13,13 +13,13 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    bgImage: "/test01.jpg",
+    bgImage: "/about/test01.jpg",
     text: `We have consultants who are specialists in businesses of all sizes, from a simple operation to complex government agencies. Our team can audit your organisation and identify areas for business improvements, and help you implement these new processes. Process improvements can help your business reduce costs and achieve business goals more efficiently.`,
     name: "Kishor Baskota",
     role: "Founder of Baskota Consultancy",
   },
   {
-    bgImage: "/test02.jpg",
+    bgImage: "/about/test02.jpg",
     text: `Baskota Consulting is a business consulting company providing private and public sector clients with the full suite of consulting services to accelerate growth, cost optimisation, and business transformation. We specialise in creating and implementing strategies that can offer organisations and startups the highest impact on their business.`,
     name: "Prakash Upreti",
     role: "IT Officer",
@@ -37,7 +37,7 @@ export default function TestimonialSlider() {
   }, []);
 
   return (
-    <section className="relative w-full h-[500px] md:h-[500px] overflow-hidden">
+    <section className="relative w-full h-125 md:h-125 overflow-hidden">
       {testimonials.map((item, idx) => (
         <div
           key={idx}

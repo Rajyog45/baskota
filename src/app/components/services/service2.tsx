@@ -13,7 +13,7 @@ export default function Service2() {
   const [activeTab, setActiveTab] = useState(0);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
-  // Detect screen width on client
+  
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 768);
     handleResize();
@@ -25,7 +25,7 @@ export default function Service2() {
     {
       title: "Our Goal",
       icon: <HiOutlineLightBulb />,
-      image: "/about04.jpg",
+      image: "/services/about04.jpg",
       points: [
         "Coordinating with business owners to ensure solutions are implemented",
         "Building rapport with internal and external vendors to support business objectives",
@@ -37,7 +37,7 @@ export default function Service2() {
     {
       title: "Our Strategy",
       icon: <HiOutlineChartBar />,
-      image: "/about04.jpg",
+      image: "/services/about04.jpg",
       points: [
         "Providing innovative business process solutions",
         "Developing realistic and high-quality client strategies",
@@ -49,7 +49,7 @@ export default function Service2() {
     {
       title: "Results",
       icon: <HiOutlineTrendingUp />,
-      image: "/about04.jpg",
+      image: "/services/about04.jpg",
       points: [
         "Establishing collaborative client relationships",
         "Ensuring strong project ownership",
@@ -64,7 +64,7 @@ export default function Service2() {
     <section className="bg-gray-100 pt-6 pb-12 md:pt-16 md:pb-16">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
-        {/* Tabs */}
+        
         <div className="flex md:flex-nowrap flex-wrap justify-between md:justify-start gap-2 mb-6 sm:mb-4 md:mb-10">
           {tabs.map((tab, index) => {
             const isActive = activeTab === index;
@@ -86,12 +86,12 @@ export default function Service2() {
           })}
         </div>
 
-        {/* Mobile Layout */}
+        
         {!isLargeScreen && (
           <div className="flex flex-col items-center text-center mt-4">
 
-            {/* Image */}
-            <div className="relative w-full max-w-[340px] h-[200px] rounded-xl overflow-hidden shadow">
+        
+            <div className="relative w-full max-w-85 h-50 rounded-xl overflow-hidden shadow">
               <Image
                 src={tabs[activeTab].image}
                 alt={tabs[activeTab].title}
@@ -100,8 +100,8 @@ export default function Service2() {
               />
             </div>
 
-            {/* Points */}
-            <ul className="space-y-1 mt-5 text-left max-w-[340px]">
+            
+            <ul className="space-y-1 mt-5 text-left max-w-85">
               {tabs[activeTab].points.map((point, idx) => (
                 <li key={idx} className="flex gap-3">
                   <HiCheckCircle className="text-indigo-600 mt-1 text-lg shrink-0" />
@@ -114,24 +114,24 @@ export default function Service2() {
           </div>
         )}
 
-        {/* Desktop Layout */}
+  
         {isLargeScreen && (
           <div className="grid md:grid-cols-12 gap-10 items-center mt-10">
 
-            {/* Image */}
+            
             <div className="md:col-span-5">
-              <div className="relative w-full h-[420px] rounded-2xl overflow-hidden shadow">
+              <div className="relative w-full h-105 rounded-2xl overflow-hidden shadow">
                 <Image
                   src={tabs[activeTab].image}
                   alt={tabs[activeTab].title}
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover h-auto w-auto"
                 />
               </div>
             </div>
 
-            {/* Points */}
+          
             <div className="md:col-span-7">
               <ul className="space-y-5">
                 {tabs[activeTab].points.map((point, idx) => (

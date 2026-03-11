@@ -1,5 +1,5 @@
 import React from 'react'
-import PolicyPage from '../components/policypage'
+import PolicyPage from '../components/policy/policypage'
 import Header from '../components/about_nav'
 import Footer from '../components/Footer'
 

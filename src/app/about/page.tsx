@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from '../components/about_nav'
-import Counter from '../components/Counter'
-import MissionValues from '../components/aboutsection'
-import TestimonialSlider from '../components/testimonial'
+import Counter from '../components/about/Counter'
+import MissionValues from '../components/about/aboutsection'
+import TestimonialSlider from '../components/about/testimonial'
 import Footer from '../components/Footer'
-import ConsultingSectionAbout from '../components/consultingSectionabout'
+import ConsultingSectionAbout from '../components/about/consultingSectionabout'
 
 const page = () => {
   return (

@@ -80,7 +80,6 @@ const Choose: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 🔥 Close when clicking outside
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
       if (
@@ -130,7 +129,7 @@ const Choose: React.FC = () => {
                 onClick={() => handleClick(idx)}
                 className="relative bg-white rounded-2xl shadow cursor-pointer overflow-hidden flex flex-col items-center text-center p-4 sm:p-6 h-auto sm:h-48 group transition-all duration-300"
               >
-                {/* Front */}
+                
                 <div
                   className={`absolute inset-0 hidden sm:flex flex-col items-center justify-center bg-[#0d092c] transition-opacity duration-300
                   ${
@@ -147,7 +146,7 @@ const Choose: React.FC = () => {
                   </h5>
                 </div>
 
-                {/* Back */}
+                
                 <div
                   className={`absolute inset-0 hidden sm:flex flex-col items-center justify-center transition-opacity duration-300 p-4
                   ${
@@ -164,7 +163,7 @@ const Choose: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Mobile layout */}
+                
                 <div className="flex flex-col items-center justify-start sm:hidden w-full mt-4">
                   <div className={`text-4xl mb-2 ${feature.color}`}>
                     {feature.icon}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/about_nav'
-import ContactPage from '../components/ContactForm'
-import ContactInfo from '../components/map'
+import ContactPage from '../components/contact/ContactForm'
+import ContactInfo from '../components/contact/map'
 import Footer from '../components/Footer'
 
 const page = () => {

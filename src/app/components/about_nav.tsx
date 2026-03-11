@@ -74,7 +74,7 @@ const Header: React.FC = () => {
           className={`absolute inset-0 transition-all duration-300 ${
             scroll
               ? "bg-blue-600 backdrop-blur-md shadow-lg h-20"
-              : "bg-[url('/bgImage08.jpg')] bg-cover bg-no-repeat bg-top md:h-80 h-22"
+              : "bg-[url('/common/bgImage08.jpg')] bg-cover bg-no-repeat bg-top md:h-80 h-22"
           }`}
         />
 
@@ -101,7 +101,7 @@ const Header: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <HiOutlineMail size={size} className="text-indigo-900" />
                       <span className="text-white md:text-lg font-bold">
-                        baskotaconsulting@gmail.com
+                        info@baskotaconsulting.com.np
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -123,14 +123,14 @@ const Header: React.FC = () => {
           </AnimatePresence>
 
           <motion.div
-            className="xl:max-w-8xl lg:max-w-full mx-auto flex items-center justify-between lg:ml-30 lg:mr-10"
+            className="xl:max-w-8xl lg:max-w-full mx-auto flex items-center justify-between lg:ml-30 xl:ml-25 lg:mr-10"
             animate={{ height: scroll ? 64 : 80 }}
             transition={{ duration: 0.3 }}
           >
             <motion.div animate={{ scale: scroll ? 0.85 : 1 }}>
               <Link href="/">
                 <Image
-                  src="/logo-white.png"
+                  src="/common/logo-white.png"
                   alt="Baskota Consulting"
                   width={300}
                   height={100}
@@ -139,7 +139,7 @@ const Header: React.FC = () => {
                 />
               </Link>
 
-              {/* ===== Mobile Active Tab Indicator ===== */}
+            
               <div className="xl:hidden ">
                 <span><Link href={"/"} className="text-white font-semibold text-lg rounded underline ml-4 p-1">Home</Link></span>
                 <span className="bg-white ml-2">|</span>
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-3 py-1 rounded-md transition ${
+                    className={`px-3 xl:px-1 2xl:px-3 3xl:px-3 py-1 rounded-md transition ${
                       isActive
                         ? "bg-indigo-500 text-white font-bold shadow-lg md:text-xl"
                         : "text-white hover:bg-indigo-400/30"
@@ -191,7 +191,7 @@ const Header: React.FC = () => {
             </button>
           </motion.div>
 
-          {/* Mobile Menu */}
+          
           <AnimatePresence>
             {menuOpen && (
               <motion.div

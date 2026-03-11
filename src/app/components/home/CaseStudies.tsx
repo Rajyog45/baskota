@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface CaseCard {
@@ -19,42 +19,42 @@ export default function CaseStudies() {
         category: "Consulting",
         description:
           "We provide consultation regarding organizations, startups and businesses of every scale.",
-        image: "/case01.jpg",
+        image: "/home/case01.jpg",
       },
       {
         title: "Audit Fixing",
         category: "Audit & Taxes",
         description:
           "We help businesses and organizations manage and fix their audits.",
-        image: "/case02.jpg",
+        image: "/home/case02.jpg",
       },
       {
         title: "Strategic Assessment",
         category: "Marketing",
         description:
           "We analyze market trends and plan strategies accordingly.",
-        image: "/case03.jpg",
+        image: "/home/case03.jpg",
       },
       {
         title: "Business Planning",
         category: "Business",
         description:
           "Corporate strategy, growth planning, branding, innovation, enterprise model design.",
-        image: "/case04.jpg",
+        image: "/home/case04.jpg",
       },
       {
-        title: "Financing Management",
+        title: "Financing Management",  
         category: "Financing",
         description:
           "We analyze finances with the help of top professionals.",
-        image: "/case05.jpg",
+        image: "/home/case05.jpg",
       },
       {
         title: "Optimizing Manufacturing",
         category: "Transport",
         description:
           "We help manufacturers optimize their processes for efficiency across the supply chain.",
-        image: "/case06.jpg",
+        image: "/home/case06.jpg",
       },
     ],
     []
@@ -67,40 +67,47 @@ export default function CaseStudies() {
 
   const extendedCards = useMemo(() => [...cards, ...cards], [cards]);
 
-  // Responsive cards per view
+  /* Responsive cards per view */
   useEffect(() => {
     const updateCardsPerView = () => {
       if (window.innerWidth >= 1024) setCardsPerView(3);
       else if (window.innerWidth >= 768) setCardsPerView(2);
-      else setCardsPerView(1); // Mobile: 1 card
+      else setCardsPerView(1);
     };
+
     updateCardsPerView();
     window.addEventListener("resize", updateCardsPerView);
+
     return () => window.removeEventListener("resize", updateCardsPerView);
   }, []);
 
-  // Update blue shade width
+  /* Blue background width */
   useEffect(() => {
     if (!carouselRef.current) return;
+
     const containerWidth = carouselRef.current.offsetWidth;
     const cardWidth = containerWidth / cardsPerView;
     setBlueWidth(cardWidth * cardsPerView);
-  }, [cardsPerView, carouselRef.current?.offsetWidth]);
+  }, [cardsPerView]);
 
-  // Auto slide
+  /* Auto slide */
   useEffect(() => {
-    const interval = setInterval(() => setActiveIndex((prev) => prev + 1), 3000);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => prev + 1);
+    }, 3000);
+
     return () => clearInterval(interval);
   }, []);
 
-  // Move carousel
+  /* Carousel movement */
   useEffect(() => {
     if (!carouselRef.current) return;
+
     const carousel = carouselRef.current;
     const containerWidth = carousel.offsetWidth;
 
     let cardWidth = containerWidth / cardsPerView;
-    if (cardsPerView === 1) cardWidth = containerWidth; // Full width on mobile
+    if (cardsPerView === 1) cardWidth = containerWidth;
 
     const move = cardWidth * activeIndex;
 
@@ -110,6 +117,7 @@ export default function CaseStudies() {
     if (activeIndex >= cards.length) {
       setTimeout(() => {
         if (!carouselRef.current) return;
+
         carousel.style.transition = "none";
         setActiveIndex(0);
         carousel.style.transform = `translateX(0px)`;
@@ -117,11 +125,15 @@ export default function CaseStudies() {
     }
   }, [activeIndex, cards.length, cardsPerView]);
 
-  const scrollLeft = () =>
+  const scrollLeft = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
-  const scrollRight = () => setActiveIndex((prev) => prev + 1);
+  }, [cards.length]);
 
-  // Touch swipe
+  const scrollRight = useCallback(() => {
+    setActiveIndex((prev) => prev + 1);
+  }, []);
+
+  /* Touch swipe support */
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -133,14 +145,19 @@ export default function CaseStudies() {
       startX = e.touches[0].clientX;
       isDragging = true;
     };
-    const onTouchMove = (e: TouchEvent) => {
+
+    const onTouchMove = () => {
       if (!isDragging) return;
     };
+
     const onTouchEnd = (e: TouchEvent) => {
       if (!isDragging) return;
+
       const dx = e.changedTouches[0].clientX - startX;
+
       if (dx > 50) scrollLeft();
       else if (dx < -50) scrollRight();
+
       isDragging = false;
     };
 
@@ -153,16 +170,18 @@ export default function CaseStudies() {
       carousel.removeEventListener("touchmove", onTouchMove);
       carousel.removeEventListener("touchend", onTouchEnd);
     };
-  }, []);
+  }, [scrollLeft, scrollRight]);
 
   return (
     <section className="sm:py-25 bg-white relative overflow-hidden">
       <div className="max-w-350 mx-auto px-6 lg:flex gap-16 items-start">
-        {/* LEFT CONTENT */}
-        <div className="lg:w-[30%] mt-4 sm:mt-10 mb-10 lg:mb-0 -lg:ml-10 lg:mt-3 xl:mt-8 2xl:mt-10 ">
+
+        {/* Left Content */}
+        <div className="lg:w-[30%] mt-4 sm:mt-10 mb-10 lg:mb-0 -lg:ml-10 lg:mt-3 xl:mt-8 2xl:mt-10">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             See Our Case Studies
           </h2>
+
           <p className="text-gray-600 mb-6 sm:text-lg text-justify">
             Baskota Consulting team members excel in solving complex business
             challenges by identifying problems, creating solutions, and executing
@@ -177,15 +196,14 @@ export default function CaseStudies() {
           </a>
         </div>
 
-        {/* CAROUSEL */}
+        {/* Carousel */}
         <div className="lg:w-[70%] relative flex items-center">
-          {/* Blue background behind visible cards */}
+
           <div
             className="absolute top-0 left-0 h-64 -z-10 rounded-xl"
             style={{ width: blueWidth }}
-          ></div>
+          />
 
-          {/* Left Arrow - hidden on mobile */}
           <button
             onClick={scrollLeft}
             className="hidden md:block absolute -left-9 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-indigo-50 transition cursor-pointer"
@@ -193,7 +211,6 @@ export default function CaseStudies() {
             <FaChevronLeft className="text-gray-700" />
           </button>
 
-          {/* Carousel viewport */}
           <div className="overflow-hidden w-full relative z-10">
             <div
               ref={carouselRef}
@@ -206,7 +223,7 @@ export default function CaseStudies() {
                   style={{
                     width:
                       cardsPerView === 1
-                        ? "100%" // Mobile: full width
+                        ? "100%"
                         : `calc(100% / ${cardsPerView} - ${
                             (16 * (cardsPerView - 1)) / cardsPerView
                           }px)`,
@@ -221,9 +238,14 @@ export default function CaseStudies() {
                       className="object-cover"
                     />
                   </div>
+
                   <div className="p-4 text-center">
-                    <span className="text-indigo-600 font-medium">{card.category}</span>
+                    <span className="text-indigo-600 font-medium">
+                      {card.category}
+                    </span>
+
                     <h5 className="font-bold text-lg mt-2">{card.title}</h5>
+
                     <p className="text-gray-600 font-semibold mt-2 text-sm">
                       {card.description}
                     </p>
@@ -233,7 +255,6 @@ export default function CaseStudies() {
             </div>
           </div>
 
-          {/* Right Arrow - hidden on mobile */}
           <button
             onClick={scrollRight}
             className="hidden md:block absolute -right-9 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-indigo-50 transition cursor-pointer"

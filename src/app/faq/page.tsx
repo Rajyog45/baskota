@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/about_nav'
-import Faq from '../components/FAQ'
+import Faq from '../components/faqs/FAQ'
 import Footer from '../components/Footer'
 
 const page = () => {

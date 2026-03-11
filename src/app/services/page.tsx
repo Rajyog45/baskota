@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '../components/about_nav'
-import CaseStudy from '../components/Header'
-import Service2 from '../components/service2'
-import Service3 from '../components/Service3'
+import CaseStudy from '../components/services/Header'
+import Service2 from '../components/services/service2'
+import Service3 from '../components/services/Service3'
 import Footer from '../components/Footer'
 
 

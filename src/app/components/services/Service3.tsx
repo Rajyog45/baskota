@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface CaseCard {
@@ -19,42 +19,42 @@ export default function RelatedCaseStudies() {
         category: "Consulting",
         description:
           "We provide consultation regarding organizations, startups and businesses of every scale.",
-        image: "/case01.jpg",
+        image: "/services/case01.jpg",
       },
       {
         title: "Audit Fixing",
         category: "Audit & Taxes",
         description:
           "We help businesses and organizations manage and fix their audits.",
-        image: "/case02.jpg",
+        image: "/services/case02.jpg",
       },
       {
         title: "Strategic Assessment",
         category: "Marketing",
         description:
           "We analyze market trends and plan strategies accordingly.",
-        image: "/case03.jpg",
+        image: "/services/case03.jpg",
       },
       {
         title: "Business Planning",
         category: "Business",
         description:
           "Corporate strategy, growth planning, branding, innovation and enterprise model design.",
-        image: "/case04.jpg",
+        image: "/services/case04.jpg",
       },
       {
         title: "Financing Management",
         category: "Financing",
         description:
           "We analyze finances with the help of top professionals.",
-        image: "/case05.jpg",
+        image: "/services/case05.jpg",
       },
       {
         title: "Optimizing Manufacturing",
         category: "Transport",
         description:
           "We help manufacturers optimize processes to improve efficiency.",
-        image: "/case06.jpg",
+        image: "/services/case06.jpg",
       },
     ],
     []
@@ -67,7 +67,7 @@ export default function RelatedCaseStudies() {
 
   const extendedCards = useMemo(() => [...cards, ...cards], [cards]);
 
-  // responsive setup
+  // Update cards per view based on screen width
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -87,7 +87,7 @@ export default function RelatedCaseStudies() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // auto slide
+  // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => prev + 1);
@@ -95,7 +95,7 @@ export default function RelatedCaseStudies() {
     return () => clearInterval(interval);
   }, []);
 
-  // move slider
+  // Slide movement
   useEffect(() => {
     if (!carouselRef.current) return;
 
@@ -116,11 +116,15 @@ export default function RelatedCaseStudies() {
     }
   }, [activeIndex, cards.length, cardsPerView]);
 
-  const prev = () =>
-    setActiveIndex((p) => (p - 1 + cards.length) % cards.length);
-  const next = () => setActiveIndex((p) => p + 1);
+  // Navigation functions
+  const prev = useCallback(
+    () => setActiveIndex((p) => (p - 1 + cards.length) % cards.length),
+    [cards.length]
+  );
 
-  // mobile swipe
+  const next = useCallback(() => setActiveIndex((p) => p + 1), []);
+
+  // Touch swipe support for mobile
   useEffect(() => {
     if (!isMobile || !carouselRef.current) return;
     const el = carouselRef.current;
@@ -128,10 +132,12 @@ export default function RelatedCaseStudies() {
     let startX = 0;
 
     const start = (e: TouchEvent) => (startX = e.touches[0].clientX);
+
+    // prev/next logic defined here to avoid dependency array issues
     const end = (e: TouchEvent) => {
       const dx = e.changedTouches[0].clientX - startX;
-      if (dx > 50) prev();
-      if (dx < -50) next();
+      if (dx > 50) setActiveIndex((p) => (p - 1 + cards.length) % cards.length);
+      if (dx < -50) setActiveIndex((p) => p + 1);
     };
 
     el.addEventListener("touchstart", start);
@@ -141,13 +147,11 @@ export default function RelatedCaseStudies() {
       el.removeEventListener("touchstart", start);
       el.removeEventListener("touchend", end);
     };
-  }, [isMobile]);
+  }, [isMobile, cards.length]);
 
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-
-        {/* SECTION TITLE */}
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold mb-4">
             Related Case Studies
@@ -159,9 +163,7 @@ export default function RelatedCaseStudies() {
           </p>
         </div>
 
-        {/* SLIDER */}
         <div className="relative flex items-center">
-
           {!isMobile && (
             <button
               onClick={prev}
@@ -203,9 +205,7 @@ export default function RelatedCaseStudies() {
                       {card.category}
                     </span>
 
-                    <h5 className="font-bold text-lg mt-2">
-                      {card.title}
-                    </h5>
+                    <h5 className="font-bold text-lg mt-2">{card.title}</h5>
 
                     <p className="text-gray-600 text-sm mt-2">
                       {card.description}
