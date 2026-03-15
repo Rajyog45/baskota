@@ -39,24 +39,24 @@ export default function Offer() {
         We here at Baskota Consulting offer excellent services to our clients with our top notch professionals.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8  ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8  ">
         {offers.map((item, idx) => (
           <motion.div
             key={idx}
-            className="group flex flex-col justify-between bg-white p-6 rounded-2xl shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full"
+            className="group flex flex-col justify-between bg-white p-6  rounded-2xl shadow hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer "
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: idx * 0.15 }}
           >
             <div>
-              <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full bg-blue-100 text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300">
+              <div className="w-14 h-14  mx-auto mb-4 flex items-center justify-center rounded-full bg-blue-100 text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300">
                 <item.icon size={28} /> 
               </div>
 
               <h3 className="text-xl font-bold mb-2">{item.title}</h3>
 
-              <p className="text-gray-600 text-sm  sm:text-base w-full leading-relaxed xl:text-center text-left">
+              <p className="text-gray-600 text-lg font-semibold xl:text-base w-full leading-relaxed xl:text-center ">
                 {item.text}
               </p>
             </div>

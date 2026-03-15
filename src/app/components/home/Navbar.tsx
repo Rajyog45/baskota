@@ -180,7 +180,7 @@ export default function Navbar() {
               <Link href="/faq">FAQs</Link>
               <Link href="/team">Team</Link>
               <Link href="/policy">Our Policy</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">Contact Us</Link>
 
               <Link
                 href="/contact"

@@ -22,7 +22,7 @@ const SectionBlock = ({
 
         
         <div className="grid grid-cols-1 gap-6 items-start sm:hidden">
-          {/* Title */}
+          
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4">{title}</h2>
             <p className="text-gray-600 font-semibold mb-6">{description}</p>
@@ -73,7 +73,7 @@ const SectionBlock = ({
             />
           </div>
 
-          {/* TEXT + POINTS */}
+          
           <div className={`${reverse ? "lg:order-1" : ""} text-center lg:text-left`}>
             <h2 className="text-3xl font-bold mb-4">{title}</h2>
             <p className="text-gray-600 font-semibold mb-6">{description}</p>

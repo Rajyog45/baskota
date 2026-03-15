@@ -10,7 +10,6 @@ const PlayButton: React.FC<PlayButtonProps> = ({ href }) => {
       rel="noopener noreferrer"
       className="relative flex items-center justify-center"
     >
-      {/* Play Icon */}
       <span className="relative z-10 w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform">
         ▶
       </span>

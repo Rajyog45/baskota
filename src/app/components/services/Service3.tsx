@@ -67,7 +67,6 @@ export default function RelatedCaseStudies() {
 
   const extendedCards = useMemo(() => [...cards, ...cards], [cards]);
 
-  // Update cards per view based on screen width
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -87,7 +86,6 @@ export default function RelatedCaseStudies() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => prev + 1);
@@ -95,7 +93,6 @@ export default function RelatedCaseStudies() {
     return () => clearInterval(interval);
   }, []);
 
-  // Slide movement
   useEffect(() => {
     if (!carouselRef.current) return;
 
@@ -116,7 +113,6 @@ export default function RelatedCaseStudies() {
     }
   }, [activeIndex, cards.length, cardsPerView]);
 
-  // Navigation functions
   const prev = useCallback(
     () => setActiveIndex((p) => (p - 1 + cards.length) % cards.length),
     [cards.length]
@@ -133,7 +129,6 @@ export default function RelatedCaseStudies() {
 
     const start = (e: TouchEvent) => (startX = e.touches[0].clientX);
 
-    // prev/next logic defined here to avoid dependency array issues
     const end = (e: TouchEvent) => {
       const dx = e.changedTouches[0].clientX - startX;
       if (dx > 50) setActiveIndex((p) => (p - 1 + cards.length) % cards.length);
@@ -191,12 +186,15 @@ export default function RelatedCaseStudies() {
                           }px)`,
                   }}
                 >
+                  
                   <div className="relative w-full h-52">
                     <Image
                       src={card.image}
                       alt={card.title}
                       fill
-                      className="object-cover h-auto w-auto"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      style={{ objectFit: "cover" }}
+                      className="h-auto w-auto"
                     />
                   </div>
 

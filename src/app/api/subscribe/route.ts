@@ -1,50 +1,38 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/app/lib/mogodb";
-import Subscription from "@/app/models/subscription";
-import { Resend } from "resend";
-import crypto from "crypto";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { connectDB } from "@/app/lib/mogodb"; // your existing MongoDB connection
+import Subscriber from "@/app/models/Subscriber";
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json();
-
-    // Simple email format check
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json({ message: "Invalid email" }, { status: 400 });
-    }
-
     await connectDB();
 
-    // Check if already subscribed
-    let existing = await Subscription.findOne({ email });
-    if (existing) {
-      if (existing.verified) {
-        return NextResponse.json({ message: "Email already verified" }, { status: 400 });
-      }
-      existing.token = crypto.randomBytes(16).toString("hex");
-      await existing.save();
-    } else {
-      existing = await Subscription.create({
-        email,
-        token: crypto.randomBytes(16).toString("hex"),
-      });
+    const { email } = await req.json();
+
+    if (!email) {
+      return NextResponse.json({ message: "Please enter your email." }, { status: 400 });
     }
 
-    const verifyUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/verify?token=${existing.token}`;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ message: "Please enter a valid email." }, { status: 400 });
+    }
 
-    // Send verification email via Resend
-    await resend.emails.send({
-      from: "v2422483@gmail.com",
-      to: email,
-      subject: "Confirm your subscription",
-      html: `<p>Click below to confirm your email:</p><a href="${verifyUrl}">Verify Email</a>`,
-    });
+    // Check duplicate
+    const existing = await Subscriber.findOne({ email }).lean();
+    if (existing) {
+      return NextResponse.json({ message: "You are already subscribed!" }, { status: 200 });
+    }
 
-    return NextResponse.json({ message: "Verification link sent to your email." });
-  } catch (err) {
-    console.error("Subscription error:", err);
-    return NextResponse.json({ message: "Something went wrong." }, { status: 500 });
+    const created = await Subscriber.create({ email });
+    const subscriberObj = { id: created._id.toString(), email: created.email };
+
+    return NextResponse.json(
+      { message: "Successfully subscribed to the newsletter!", subscriber: subscriberObj },
+      { status: 201 }
+    );
+
+  } catch (error) {
+    console.error("Subscription error:", error);
+    return NextResponse.json({ message: "Server error. Please try again later." }, { status: 500 });
   }
 }

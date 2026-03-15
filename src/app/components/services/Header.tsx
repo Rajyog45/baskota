@@ -6,8 +6,6 @@ import { FaCalendarAlt, FaFolderOpen, FaPenFancy, FaUser } from "react-icons/fa"
 
 const images = ["/services/casestudy01.jpg", "/services/casestudy02.jpg"];
 
-/* ---------------- SLIDER COMPONENT ---------------- */
-
 function Slider({
   activeIndex,
   handleTouchStart,
@@ -19,7 +17,7 @@ function Slider({
 }) {
   return (
     <div
-      className="relative overflow-hidden rounded-xl w-full h-55 sm:h-60 md:h-96 bg-gray-200"
+      className="relative overflow-hidden rounded-xl w-full h-55 sm:h-60 md:h-96 2xl:h-130 3xl:h-150 bg-gray-200"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -36,8 +34,9 @@ function Slider({
               src={src}
               alt={`Case study ${idx + 1}`}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              style={{ objectFit: "cover" }}
               priority={idx === 0}
-              className="object-cover h-auto w-auto"
             />
           </div>
         ))}
@@ -45,8 +44,6 @@ function Slider({
     </div>
   );
 }
-
-/* ---------------- INFO GRID COMPONENT ---------------- */
 
 function InfoGrid() {
   const items = [
@@ -75,8 +72,6 @@ function InfoGrid() {
     </div>
   );
 }
-
-/* ---------------- MAIN COMPONENT ---------------- */
 
 export default function CaseStudySection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -118,8 +113,7 @@ export default function CaseStudySection() {
     <section className="py-12 sm:py-14 mt-10 sm:mt-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
 
-        {/* Mobile Layout */}
-
+        {/* Mobile Layout  */}
         <div className="md:hidden flex flex-col items-center text-center px-4">
 
           <div className="w-full max-w-85">
@@ -144,7 +138,6 @@ export default function CaseStudySection() {
         </div>
 
         {/* Desktop Layout */}
-
         <div className="hidden md:grid md:grid-cols-12 gap-10 items-center px-6">
 
           <div className="md:col-span-7">

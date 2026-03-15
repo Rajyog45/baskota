@@ -43,7 +43,7 @@ const ConsultingSection: React.FC = () => {
               alt="Consulting Meeting"
               width={600}
               height={400}
-              className="w-full h-auto md:h-105 object-cover rounded-lg sm:rounded-xl md:rounded-2xl shadow-md"
+              className="w-full h-auto md:h-105 2xl:h-130 3xl:h-150 object-cover rounded-lg sm:rounded-xl md:rounded-2xl shadow-md"
             />
 
             <div className="absolute inset-0 flex items-center justify-center">

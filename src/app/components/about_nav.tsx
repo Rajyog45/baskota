@@ -59,7 +59,7 @@ const Header: React.FC = () => {
     { label: "FAQs", href: "/faq" },
     { label: "Team", href: "/team" },
     { label: "Our Policy", href: "/policy" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   return (

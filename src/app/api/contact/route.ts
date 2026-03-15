@@ -1,18 +1,25 @@
-// src/app/api/contact/route.ts
 import { NextResponse } from "next/server";
-import { clientPromise} from "../../lib/mogodb"
+import { connectDB } from "@/app/lib/mogodb";
 import Contact from "@/app/models/Contact";
+import { Resend } from "resend";
 
-console.log("API /api/contact file loaded!");
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+interface ContactBody {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  message?: string;
+}
 
 export async function POST(req: Request) {
-  console.log("API /contact POST called");
-
   try {
-    const body = await req.json();
-    console.log("Request body:", body);
+    const body: ContactBody = await req.json();
 
-    const { firstName, lastName, email } = body;
+    const { firstName, lastName, email, phone, company, message } = body;
+
     if (!firstName || !lastName || !email) {
       return NextResponse.json(
         { success: false, message: "Missing required fields" },
@@ -20,24 +27,43 @@ export async function POST(req: Request) {
       );
     }
 
+    // Connect MongoDB  
     await connectDB();
 
+    // Save to MongoDB
     const contact = await Contact.create({
       firstName,
       lastName,
       email,
-      phone: body.phone || "",
-      company: body.company || "",
-      message: body.message || "",
+      phone,
+      company,
+      message,
     });
 
-    console.log("Saved contact:", contact);
+    // Send Email Notification
+    await resend.emails.send({
+      from: "Contact Form <onboarding@resend.dev>",
+      to: process.env.ADMIN_EMAIL as string,
+      subject: "New Contact Form Submission",
+      html: `
+        <h2>New Contact Request</h2>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+        <p><strong>Company:</strong> ${company || "N/A"}</p>
+        <p><strong>Message:</strong> ${message || "N/A"}</p>
+      `,
+    });
 
-    return NextResponse.json({ success: true, data: contact }, { status: 201 });
-  } catch (err) {
-    console.error("API error:", err);
     return NextResponse.json(
-      { success: false, message: "Failed to submit. Check server logs." },
+      { success: true, data: contact },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Contact API error:", error);
+
+    return NextResponse.json(
+      { success: false, message: "Server error" },
       { status: 500 }
     );
   }

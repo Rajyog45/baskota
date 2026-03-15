@@ -67,7 +67,7 @@ export default function CaseStudies() {
 
   const extendedCards = useMemo(() => [...cards, ...cards], [cards]);
 
-  /* Responsive cards per view */
+  
   useEffect(() => {
     const updateCardsPerView = () => {
       if (window.innerWidth >= 1024) setCardsPerView(3);
@@ -81,7 +81,7 @@ export default function CaseStudies() {
     return () => window.removeEventListener("resize", updateCardsPerView);
   }, []);
 
-  /* Blue background width */
+  
   useEffect(() => {
     if (!carouselRef.current) return;
 
@@ -90,7 +90,7 @@ export default function CaseStudies() {
     setBlueWidth(cardWidth * cardsPerView);
   }, [cardsPerView]);
 
-  /* Auto slide */
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => prev + 1);
@@ -99,7 +99,7 @@ export default function CaseStudies() {
     return () => clearInterval(interval);
   }, []);
 
-  /* Carousel movement */
+  
   useEffect(() => {
     if (!carouselRef.current) return;
 
@@ -133,7 +133,7 @@ export default function CaseStudies() {
     setActiveIndex((prev) => prev + 1);
   }, []);
 
-  /* Touch swipe support */
+  
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -176,16 +176,14 @@ export default function CaseStudies() {
     <section className="sm:py-25 bg-white relative overflow-hidden">
       <div className="max-w-350 mx-auto px-6 lg:flex gap-16 items-start">
 
-        {/* Left Content */}
-        <div className="lg:w-[30%] mt-4 sm:mt-10 mb-10 lg:mb-0 -lg:ml-10 lg:mt-3 xl:mt-8 2xl:mt-10">
+        
+        <div className="lg:w-[30%] mt-4 sm:mt-10  mb-10 lg:mb-0  lg:mt-1   xl:mt-8 2xl:mt-10">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             See Our Case Studies
           </h2>
 
           <p className="text-gray-600 mb-6 sm:text-lg text-justify">
-            Baskota Consulting team members excel in solving complex business
-            challenges by identifying problems, creating solutions, and executing
-            successfully.
+            Baskota Consulting&apos;s team members have proven effective in meeting a wide variety of challenges.In each case, the correct problem, obstacle or opportunity was identified, an appropriate solution was devised and then successfully executed to solve the problem or maximize the opportunity.
           </p>
 
           <a
@@ -196,7 +194,7 @@ export default function CaseStudies() {
           </a>
         </div>
 
-        {/* Carousel */}
+        
         <div className="lg:w-[70%] relative flex items-center">
 
           <div
@@ -229,13 +227,13 @@ export default function CaseStudies() {
                           }px)`,
                   }}
                 >
-                  <div className="relative w-full h-48">
+                  <div className="relative w-full h-48 lg:h-60 xl:h-80">
                     <Image
                       src={card.image}
                       alt={card.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-cover "
                     />
                   </div>
 
